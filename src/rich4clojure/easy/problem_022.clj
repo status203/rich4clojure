@@ -11,7 +11,7 @@
 
 (def restricted [count])
 
-(def __ :tests-will-fail)
+(def __ (fn [s] (reduce (fn [acc _] (inc acc)) 0 s)))
 
 (comment
   

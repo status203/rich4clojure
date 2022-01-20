@@ -9,10 +9,13 @@
 ;; Write a function which returns the first X fibonacci
 ;; numbers.
 
-(def __ :tests-will-fail)
+(defn fib [a b]
+  (lazy-seq (cons a (fib b (+ a b)))))
+
+(def __ #(take % (fib 1 1)))
 
 (comment
-  
+  (take 10 (fib 1 1))
   )
 
 (tests

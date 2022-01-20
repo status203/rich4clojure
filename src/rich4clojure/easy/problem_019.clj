@@ -11,7 +11,11 @@
 
 (def restricted [last])
 
-(def __ :tests-will-fail)
+(defn my-last
+  [s]
+  (reduce (fn [_ val] val) s))
+
+(def __ my-last)
 
 (comment
   

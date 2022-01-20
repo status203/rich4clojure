@@ -10,7 +10,16 @@
 
 (def restricted [flatten])
 
-(def __ :tests-will-fail)
+(defn my-flatten
+  [s]
+  (reduce (fn [acc val]
+            (if (sequential? val)
+              (concat acc (my-flatten val))
+              (concat acc (list val))))
+          '()
+          s))
+
+(def __ my-flatten)
 
 (comment
   

@@ -9,7 +9,9 @@
 ;; Write a function which takes a string and returns a new
 ;; string containing only the capital letters.
 
-(def __ :tests-will-fail)
+(def capital-letter? #(<= (int \A) (int %) (int \Z)))
+
+(def __ #(apply str (filter capital-letter? %)))
 
 (comment
   
@@ -17,7 +19,7 @@
 
 (tests
   (__ "HeLlO, WoRlD!") := "HLOWRD"
-  (__ "nothing") :=
+  (__ "nothing") := ""
   (__ "$#A(*&987Zf") := "AZ")
 
 ;; Share your solution, and/or check how others did it:

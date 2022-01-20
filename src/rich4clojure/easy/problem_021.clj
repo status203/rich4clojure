@@ -11,10 +11,10 @@
 
 (def restricted [nth])
 
-(def __ :tests-will-fail)
+(def __ (fn [s n] (first (drop n s))))
 
 (comment
-  
+  (drop 0 [:a :b :c])
   )
 
 (tests

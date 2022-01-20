@@ -10,7 +10,7 @@
 
 (def restricted [reverse rseq])
 
-(def __ :tests-will-fail)
+(def __ #(reduce conj '() %))
 
 (comment
   
