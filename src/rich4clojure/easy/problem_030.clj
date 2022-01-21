@@ -9,7 +9,17 @@
 ;; Write a function which removes consecutive duplicates
 ;; from a sequence.
 
-(def __ :tests-will-fail)
+(defn dedup
+  [s]
+  (if (empty? s)
+    '()
+    (cons (first s)
+          (->> s
+               (partition 2 1)
+               (filter #(not= (first %) (second %)))
+               (map second)))))
+
+(def __ dedup)
 
 (comment
   

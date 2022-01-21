@@ -9,7 +9,16 @@
 ;; Write a function which packs consecutive duplicates
 ;; into sub-lists.
 
-(def __ :tests-will-fail)
+(defn pack
+  [s]
+  (lazy-seq
+   (if-let [s (seq s)]
+     (let [v (first s)
+           [run rst] (split-with #(= % v) s)]
+       (cons run (pack rst)))
+     '())))
+
+(def __ pack)
 
 (comment
   
