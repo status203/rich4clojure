@@ -9,10 +9,13 @@
 ;; Write a function which can rotate a sequence in either
 ;; direction.
 
-(def __ :tests-will-fail)
+(def __ (fn [n s]
+          (let [rotate-left-by (mod n (count s))]
+            (concat (drop rotate-left-by s) (take rotate-left-by s)))))
 
 (comment
-  
+  (mod -2 5)
+  (rem -2 5)
   )
 
 (tests

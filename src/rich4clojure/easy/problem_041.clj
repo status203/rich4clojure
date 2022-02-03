@@ -9,10 +9,13 @@
 ;; Write a function which drops every Nth item from a
 ;; sequence.
 
-(def __ :tests-will-fail)
+
+(def __ (fn [s n] (->> s
+                       (partition-all (dec n) n)
+                       flatten)))
 
 (comment
-  
+
   )
 
 (tests

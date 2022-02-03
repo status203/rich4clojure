@@ -10,7 +10,7 @@
 ;; sequences. You may assume that the vectors will have
 ;; the same length.
 
-(def __ :tests-will-fail)
+(def __ (fn [s1 s2] (apply + (map #(* % %2) s1 s2))))
 
 (comment
   

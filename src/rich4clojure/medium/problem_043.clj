@@ -9,10 +9,12 @@
 ;; Write a function which reverses the interleave process
 ;; into x number of subsequences.
 
-(def __ :tests-will-fail)
+(def __ #(->> %
+              (partition %2)
+              (apply map vector)))
 
 (comment
-  
+  (partition 3 (range 9))
   )
 
 (tests
