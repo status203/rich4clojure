@@ -9,7 +9,12 @@
 ;; Write a function which duplicates each element of a
 ;; sequence.
 
-(def __ :tests-will-fail)
+(defn dup
+  [[frst & rst]]
+  (when frst
+    (lazy-seq (cons frst (cons frst (dup rst))))))
+
+(def __ dup)
 
 (comment
   

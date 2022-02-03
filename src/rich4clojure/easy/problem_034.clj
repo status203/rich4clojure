@@ -11,7 +11,20 @@
 
 (def restricted [range])
 
-(def __ :tests-will-fail)
+; Written this way because I started with a multi-arity version that could
+; handle increasing or decreasing ranges.
+(defn my-range
+  [start end]
+  (lazy-seq
+   (when-not (= start end)
+     (cons start (my-range (inc start) end)))))
+
+#_(def __ my-range)
+
+
+(def __ #(take (- %2 %1) (iterate inc %1)))
+
+
 
 (comment
   

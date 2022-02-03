@@ -11,10 +11,17 @@
 
 (def restricted [interpose])
 
-(def __ :tests-will-fail)
+(defn my-interpose
+  [v [fst & rst]]
+  (lazy-seq
+   (if rst
+     (cons fst (cons v (my-interpose v rst)))
+     (list fst))))
+
+(def __ my-interpose)
 
 (comment
-  
+  (let [[fst rst] [:a]] {:fst fst :rst rst} )
   )
 
 (tests

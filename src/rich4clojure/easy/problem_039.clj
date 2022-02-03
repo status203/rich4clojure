@@ -12,7 +12,13 @@
 
 (def restricted [interleave])
 
-(def __ :tests-will-fail)
+(defn my-interleave
+  [[frst1 & rst1] [frst2 & rst2]]
+  (when (and frst1 frst2)
+    (lazy-seq
+     (concat [frst1 frst2] (my-interleave rst1 rst2)))))
+
+(def __ my-interleave)
 
 (comment
   
