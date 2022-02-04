@@ -16,8 +16,8 @@
   )
 
 (tests
-  __ := (some #{2 7 6} [5 6 7 8])
-  __ := (some #(when (even? %) %) [5 6 7 8]))
+  6 := (some #{2 7 6} [5 6 7 8])
+  6 := (some #(when (even? %) %) [5 6 7 8]))
 
 ;; Share your solution, and/or check how others did it:
 ;; https://gist.github.com/e8d9e038324cff43641994d657d9ec93

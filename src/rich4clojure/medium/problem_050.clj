@@ -13,7 +13,9 @@
 ;; sub-sequences themselves can be returned in any order
 ;; (this is why 'set' is used in the test cases).
 
-(def __ :tests-will-fail)
+(def __ #(->> % 
+              (group-by type) 
+              vals))
 
 (comment
   
