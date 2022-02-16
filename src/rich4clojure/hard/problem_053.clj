@@ -12,7 +12,22 @@
 ;; occurs first. An increasing sub-sequence must have a
 ;; length of 2 or greater to qualify.
 
-(def __ :tests-will-fail)
+(defn partition-between
+  [split? s]
+  (let [switch (reductions = true (map split? s (rest s)))]
+    (->> switch
+         (map list s)
+         (partition-by second)
+         (map (partial map first)))))
+
+(defn longest-subseq
+  [s]
+  (let [partitioned (partition-between < s)]
+    (->> partitioned
+         (filter #(> (count %) 1))
+         (reduce (fn [acc v] (if (> (count v) (count acc)) v acc)) []))))
+
+(def __ longest-subseq)
 
 (comment
   
@@ -26,3 +41,4 @@
 
 ;; Share your solution, and/or check how others did it:
 ;; https://gist.github.com/2cd6e7158b0ea3d24d125c997a0f8d1e
+
