@@ -12,7 +12,14 @@
 
 (def restricted [partition partition-all])
 
-(def __ :tests-will-fail)
+(defn my-partition
+  [n s]
+  (lazy-seq
+   (when (>= (count s) n)
+     (let [[run rst] (split-at n s)]
+       (cons run (my-partition n rst))))))
+
+(def __ my-partition)
 
 (comment
   
