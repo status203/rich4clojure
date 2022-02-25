@@ -12,10 +12,20 @@
 
 (def restricted [frequencies])
 
-(def __ :tests-will-fail)
+(defn freqs
+  [s]
+  (reduce (fn [acc v] (if (contains? acc v)
+                         (update acc v inc)
+                         (assoc acc v 1)))
+          {}
+          s))
+
+(def __ freqs)
 
 (comment
-  
+  (def fninc (fnil inc 0))
+  (fninc nil)
+  (fninc 1)
   )
 
 (tests
