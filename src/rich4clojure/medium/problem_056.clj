@@ -11,31 +11,19 @@
 
 (def restricted [distinct])
 
-(defn next-distinct-pos
-  ([s seen] (next-distinct-pos s seen))
-  ([s seen dropped]
-   (if-let [[fst & rst] (seq s)]
-    (if (contains? seen fst)
-      (recur rst seen (inc dropped))
-      dropped)
-     nil)
-   ))
-
 (defn my-distinct
-  ([s] (my-distinct s #{}))
-  ([s seen]
-   (lazy-seq
-    (if-let [pos (next-distinct-pos s seen)]
-      (do
-        (prn {:s s :pos pos})
-        (let [[v & rst] (drop pos s)]
-          (cons v (my-distinct rst (conj seen v)))))
-      nil))))
+  [s]
+  (reduce (fn [acc v]
+            (if (some #(= v %) acc) 
+              acc
+              (conj acc v)))
+          []
+          s))
 
 (def __ my-distinct)
 
 (comment
-  
+  (my-distinct [])
   )
 
 (tests
